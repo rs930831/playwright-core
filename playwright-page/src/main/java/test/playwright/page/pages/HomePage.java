@@ -10,6 +10,8 @@ public class HomePage extends BasePage {
         super();
         playwrightUtil = PlaywrightUtil.getPlaywrightUtil();
     }
+
+    private final String dynamicXpathForMenuCards = "//div[@class='card-body']/*[text()='@@menuName']";
     public static HomePage getInstance() {
         return new HomePage();
     }
@@ -27,4 +29,11 @@ public class HomePage extends BasePage {
         HomePage hp = HomePage.getInstance();
         Thread.sleep(5000);
     }
+
+    public void navigateToElements() {
+        String currentXpath = dynamicXpathForMenuCards.replace("@@menuName", "Elements");
+        playwrightUtil.clickOnElement(currentXpath);
+    }
+
+
 }

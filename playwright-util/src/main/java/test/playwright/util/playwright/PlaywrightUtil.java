@@ -1,11 +1,14 @@
 package test.playwright.util.playwright;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.SelectOption;
 import test.playwright.util.playwright.BrowserTypeEnum;
 
 public class PlaywrightUtil implements AutoCloseable {
+
     private Playwright playwright;
     private Browser browser;
     private BrowserContext browserContext;
@@ -138,8 +141,51 @@ public class PlaywrightUtil implements AutoCloseable {
         pageMap.put(pageName, newPage);
     }
 
+    /**
+     * <p>fill is the easiest way to fill out the form fields.
+     * It focuses the element and triggers an input event with the entered text.
+     * It works for <input>, <textarea> and [contenteditable] elements.
+     *
+     * Similar to Selenium sendKeys
+     *
+     * <a href="https://playwright.dev/java/docs/input">Playwright Java Doc For Input</a>
+     * </p>
+     * @param xpath xpath string of element
+     * @param key xpath string of element
+     * @return void
+     * @since 1.0
+     */
     public void fill(String xpath, String key) {
         page.locator(xpath).fill(key);
+    }
+
+//    public void selectOption(final String xpath, final String option) {
+//        page.locator(xpath).selectOption(option);
+//    }
+
+//    public void selectOptions(final String xpath, final String[] options) {
+//        page.locator(xpath).selectOption(options);
+//    }
+    
+    public void selectOption(final String xpath, final String... options) {
+        if(options.length == 0) {
+            throw new RuntimeException("At Least One Options is Needed");
+        }
+        if(options.length == 1) {
+        }
+        List<String> list = (options.length == 1) ? page.selectOption(xpath, options[0]) : page.selectOption(xpath, options);
+    }
+
+    public void clear(final String xpath) {
+        page.locator(xpath).clear();
+    }
+
+    public void check(final String xpath) {
+        page.locator(xpath).check();
+    }
+
+    public void uncheck(final String xpath) {
+        page.locator(xpath).uncheck();
     }
 }
 
