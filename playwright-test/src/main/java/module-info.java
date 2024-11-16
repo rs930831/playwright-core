@@ -5,4 +5,5 @@ module playwright.test {
     exports test.playwright.test to org.testng;
     exports test.playwright.test.elements to org.testng;
     exports test.playwright.test.base to org.testng;
+    //exports test.playwright.test.internal;
 }

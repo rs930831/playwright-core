@@ -19,13 +19,34 @@ public class ElementsTest extends BaseTest {
         elementsPageFlow = new ElementsPageFlow();
     }
 
-    @Test(priority = 1)
-    public void testNavigateToElements(ITestContext context) throws InterruptedException {
+    private void navigateToElements() {
         homePageFlow.navigateToHome();
         homePageFlow.navigateToElements();
+    }
+
+    @Test
+    public void elementsPageTextBoxTest(ITestContext context) throws InterruptedException {
+        navigateToElements();
         elementsPageFlow.navigateToMenu("Text Box");
+        elementsPageFlow.completeTextBoxFormSubmission(
+                "Andy America",
+                "andy.america@example.com",
+                "Andys Current Address",
+                "Andys Permanent Address");
         Thread.sleep(5000);
     }
+
+    @Test
+    public void elementsPageCheckBoxTest(ITestContext context) throws InterruptedException {
+        navigateToElements();
+        elementsPageFlow.navigateToMenu("Check Box");
+        elementsPageFlow.checkHome();
+        elementsPageFlow.expandCheckBox();
+        elementsPageFlow.uncheckDesktop();
+        Thread.sleep(5000);
+    }
+
+
 
 
 

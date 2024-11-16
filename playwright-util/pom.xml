@@ -20,6 +20,7 @@
     <maven.compiler.release>17</maven.compiler.release>
     <dependency.version.selenium>4.25.0</dependency.version.selenium>
     <dependency.version.playwright>1.47.0</dependency.version.playwright>
+    <dependency.version.opencsv>5.9</dependency.version.opencsv>
   </properties>
 
   <dependencies>
@@ -27,6 +28,11 @@
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
       <version>${dependency.version.playwright}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.opencsv</groupId>
+      <artifactId>opencsv</artifactId>
+      <version>${dependency.version.opencsv}</version>
     </dependency>
   </dependencies>
 

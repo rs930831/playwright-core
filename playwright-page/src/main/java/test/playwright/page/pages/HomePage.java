@@ -25,11 +25,6 @@ public class HomePage extends BasePage {
     }
 
 
-    public static void main(String[] args) throws InterruptedException {
-        HomePage hp = HomePage.getInstance();
-        Thread.sleep(5000);
-    }
-
     public void navigateToElements() {
         String currentXpath = dynamicXpathForMenuCards.replace("@@menuName", "Elements");
         playwrightUtil.clickOnElement(currentXpath);
